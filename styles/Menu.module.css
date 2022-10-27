@@ -1,0 +1,16 @@
+.menu {
+  background-color: var(--color-white);
+  bottom: 20px;
+  box-shadow: 0 6px 6px var(--color-white-200);
+  font-size: 1rem;
+  left: 50%;
+  position: fixed;
+  transform: translateX(-50%);
+  width: 280px;
+}
+
+.menu > ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}

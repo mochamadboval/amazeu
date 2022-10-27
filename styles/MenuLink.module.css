@@ -1,0 +1,20 @@
+.page {
+  line-height: 1;
+  width: 100%;
+}
+
+.page > a {
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  border-top: 2px solid transparent;
+  color: var(--color-black);
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  padding-block: 10px;
+  text-decoration: none;
+}
+
+.page > a:hover {
+  border-bottom-color: var(--color-green);
+}
