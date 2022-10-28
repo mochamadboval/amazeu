@@ -1,5 +1,73 @@
-.main {
+.container {
   margin-inline: auto;
   max-width: 960px;
-  padding: 20px;
+  padding: 40px 20px 108px;
+}
+
+.container > header > h1 {
+  line-height: 1;
+}
+
+.container > header > p {
+  color: var(--color-gray);
+  font-size: 1.25rem;
+  margin-top: 10px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.main > article img {
+  height: auto;
+  width: auto;
+}
+
+.pagination {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.pagination > button {
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1;
+  padding: 14px 15px;
+}
+
+.pagination > button:disabled {
+  background-color: var(--color-white-200);
+  border-color: var(--color-white-200);
+  color: var(--color-white);
+  cursor: not-allowed;
+}
+
+.prev {
+  background-color: transparent;
+  border: 2px solid var(--color-green);
+  color: var(--color-green);
+}
+
+.next {
+  border: 2px solid transparent;
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+.container > footer {
+  font-size: 1rem;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.container > footer a {
+  color: var(--color-black);
+  text-decoration: 1px underline dotted;
 }
