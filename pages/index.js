@@ -20,11 +20,8 @@ const Home = (props) => {
   const totalPages = landmarks.total_results / 20;
 
   const paginationHandler = async (page) => {
-    const response = await fetch(page, {
-      headers: {
-        Authorization: process.env.API_KEY,
-      },
-    });
+    const encodePage = encodeURIComponent(page);
+    const response = await fetch(`/api/pexels?url=${encodePage}`);
     const data = await response.json();
 
     setData(data);
