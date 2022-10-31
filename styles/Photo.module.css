@@ -1,0 +1,65 @@
+.container {
+  margin-inline: auto;
+  max-width: 960px;
+  padding: 40px 20px 108px;
+}
+
+.container > header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container nav > button {
+  background-color: transparent;
+  border: 1px solid var(--color-black);
+  color: var(--color-black);
+}
+
+.main {
+  margin-top: 40px;
+}
+
+.main > img {
+  margin-inline: auto;
+  height: auto;
+  width: auto;
+}
+
+.main > h2 {
+  margin-top: 20px;
+}
+
+.main > p {
+  margin-top: 10px;
+}
+
+.main > p > a {
+  color: var(--color-black);
+  text-decoration: 1px underline dotted;
+}
+
+.action {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.action > button {
+  background-color: transparent;
+  border: none;
+  border-radius: none;
+  line-height: 1;
+  padding: 0;
+}
+
+.action > a {
+  background-color: var(--color-green);
+  border-radius: 10px;
+  color: var(--color-white);
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+}

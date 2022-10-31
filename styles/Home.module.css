@@ -4,10 +4,6 @@
   padding: 40px 20px 108px;
 }
 
-.container > header > h1 {
-  line-height: 1;
-}
-
 .container > header > p {
   color: var(--color-gray);
   font-size: 1.25rem;
@@ -33,15 +29,6 @@
   margin-top: 20px;
 }
 
-.pagination > button {
-  border-radius: 10px;
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: 700;
-  line-height: 1;
-  padding: 14px 15px;
-}
-
 .pagination > button:disabled {
   background-color: var(--color-white-200);
   border-color: var(--color-white-200);
@@ -59,15 +46,4 @@
   border: 2px solid transparent;
   background-color: var(--color-green);
   color: var(--color-white);
-}
-
-.container > footer {
-  font-size: 1rem;
-  margin-top: 40px;
-  text-align: center;
-}
-
-.container > footer a {
-  color: var(--color-black);
-  text-decoration: 1px underline dotted;
 }

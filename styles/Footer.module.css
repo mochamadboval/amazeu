@@ -1,0 +1,10 @@
+.footer {
+  font-size: 1rem;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.footer a {
+  color: var(--color-black);
+  text-decoration: 1px underline dotted;
+}

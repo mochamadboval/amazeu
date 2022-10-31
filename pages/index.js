@@ -4,6 +4,8 @@ import Link from "next/link";
 
 import { Fragment, useState } from "react";
 
+import Footer from "../components/Footer";
+
 import styles from "../styles/Home.module.css";
 
 const Home = (props) => {
@@ -82,14 +84,7 @@ const Home = (props) => {
           </div>
         </main>
 
-        <footer>
-          <p>
-            <b>Amaze U</b> &copy; 2022.
-          </p>
-          <p>
-            Photos provided by <a href="https://www.pexels.com">Pexels</a>.
-          </p>
-        </footer>
+        <Footer />
       </div>
     </Fragment>
   );
