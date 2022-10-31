@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import Footer from "../../../components/Footer";
 
@@ -12,12 +12,55 @@ import styles from "../../../styles/Photo.module.css";
 const Photo = (props) => {
   const router = useRouter();
 
+  const [isLiked, setIsLiked] = useState(null);
+
   const photo = props.photo;
+
+  useEffect(() => {
+    const savedPhotos = JSON.parse(localStorage.getItem("amazeu"));
+    if (savedPhotos === null) {
+      return;
+    }
+
+    const savedPhoto = savedPhotos.filter(
+      (savedPhoto) => savedPhoto.id === photo.id
+    );
+
+    if (savedPhoto.length !== 0) {
+      setIsLiked(true);
+    }
+  }, []);
+
+  const likeHandler = () => {
+    const savedPhotos = JSON.parse(localStorage.getItem("amazeu"));
+
+    if (savedPhotos === null) {
+      localStorage.setItem("amazeu", JSON.stringify([photo]));
+    } else if (savedPhotos.length === 0) {
+      savedPhotos.push(photo);
+      localStorage.setItem("amazeu", JSON.stringify(savedPhotos));
+    } else {
+      for (const savedPhoto of savedPhotos) {
+        if (savedPhoto.id === photo.id) {
+          const unremovedPhotos = savedPhotos.filter(
+            (savedPhoto) => savedPhoto.id !== photo.id
+          );
+          localStorage.setItem("amazeu", JSON.stringify(unremovedPhotos));
+          setIsLiked(false);
+          return;
+        }
+      }
+      savedPhotos.push(photo);
+      localStorage.setItem("amazeu", JSON.stringify(savedPhotos));
+    }
+
+    setIsLiked(true);
+  };
 
   return (
     <Fragment>
       <Head>
-        <title>{photo.alt} |Amaze U</title>
+        <title>{photo.alt} - Amaze U</title>
         <meta
           name="description"
           content={`${photo.alt} by ${photo.photographer}`}
@@ -46,10 +89,10 @@ const Photo = (props) => {
             by <Link href={photo.photographer_url}>{photo.photographer}</Link>
           </p>
           <div className={styles.action}>
-            <button>
+            <button onClick={likeHandler}>
               <Image
-                src="/like.svg"
-                alt="Save to Likes"
+                src={isLiked ? "/liked.svg" : "/like.svg"}
+                alt=""
                 width={44}
                 height={44}
               />
