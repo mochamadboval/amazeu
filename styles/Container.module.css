@@ -1,5 +1,5 @@
-.main {
+.container {
   margin-inline: auto;
   max-width: 960px;
-  padding: 20px;
+  padding: 40px 20px 108px;
 }

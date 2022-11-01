@@ -3,8 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Fragment, useState } from "react";
+import Landmarks from "../components/Landmarks";
 
-import Footer from "../components/Footer";
+import Container from "../components/layout/Container";
+import Footer from "../components/layout/Footer";
+import Header from "../components/layout/Header";
+import MainList from "../components/layout/MainList";
 
 import styles from "../styles/Home.module.css";
 
@@ -40,25 +44,10 @@ const Home = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={styles.container}>
-        <header>
-          <h1>Amaze U</h1>
-          <p>Explore all famous landmarks around the world.</p>
-        </header>
-        <main className={styles.main}>
-          {landmarks.photos.map((landmark) => (
-            <article key={landmark.id}>
-              <Link href={`/photos/${landmark.id}`}>
-                <Image
-                  src={landmark.src.landscape}
-                  alt={landmark.alt}
-                  title={landmark.alt}
-                  height={landmark.height}
-                  width={landmark.width}
-                />
-              </Link>
-            </article>
-          ))}
+      <Container>
+        <Header>Explore all famous landmarks around the world.</Header>
+        <MainList>
+          <Landmarks landmarks={landmarks.photos} />
           <div className={styles.pagination}>
             <button
               className={styles.prev}
@@ -67,7 +56,6 @@ const Home = (props) => {
             >
               Prev
             </button>
-
             <p>
               Page {landmarks.page} of{" "}
               {Number.isInteger(totalPages)
@@ -82,10 +70,9 @@ const Home = (props) => {
               Next
             </button>
           </div>
-        </main>
-
+        </MainList>
         <Footer />
-      </div>
+      </Container>
     </Fragment>
   );
 };

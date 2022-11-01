@@ -1,0 +1,15 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.main > p {
+  text-align: center;
+}
+
+.main > article img {
+  height: auto;
+  width: auto;
+}

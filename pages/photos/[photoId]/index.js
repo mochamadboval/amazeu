@@ -5,7 +5,8 @@ import { useRouter } from "next/router";
 
 import { Fragment, useEffect, useState } from "react";
 
-import Footer from "../../../components/Footer";
+import Container from "../../../components/layout/Container";
+import Footer from "../../../components/layout/Footer";
 
 import styles from "../../../styles/Photo.module.css";
 
@@ -25,7 +26,6 @@ const Photo = (props) => {
     const savedPhoto = savedPhotos.filter(
       (savedPhoto) => savedPhoto.id === photo.id
     );
-
     if (savedPhoto.length !== 0) {
       setIsLiked(true);
     }
@@ -46,6 +46,7 @@ const Photo = (props) => {
             (savedPhoto) => savedPhoto.id !== photo.id
           );
           localStorage.setItem("amazeu", JSON.stringify(unremovedPhotos));
+
           setIsLiked(false);
           return;
         }
@@ -68,8 +69,8 @@ const Photo = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={styles.container}>
-        <header>
+      <Container>
+        <header className={styles.header}>
           <nav>
             <button onClick={() => router.back()}>Back</button>
           </nav>
@@ -102,7 +103,7 @@ const Photo = (props) => {
         </main>
 
         <Footer />
-      </div>
+      </Container>
     </Fragment>
   );
 };

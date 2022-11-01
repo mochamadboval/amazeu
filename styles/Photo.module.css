@@ -1,16 +1,10 @@
-.container {
-  margin-inline: auto;
-  max-width: 960px;
-  padding: 40px 20px 108px;
-}
-
-.container > header {
+.header {
   align-items: center;
   display: flex;
   justify-content: space-between;
 }
 
-.container nav > button {
+.header > nav > button {
   background-color: transparent;
   border: 1px solid var(--color-black);
   color: var(--color-black);

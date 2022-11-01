@@ -1,0 +1,5 @@
+.header > p {
+  color: var(--color-gray);
+  font-size: 1.25rem;
+  margin-top: 10px;
+}
