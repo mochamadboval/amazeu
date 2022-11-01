@@ -13,7 +13,10 @@ const Likes = () => {
   const [landmarks, setLandmarks] = useState(null);
 
   useEffect(() => {
-    const savedPhotos = JSON.parse(localStorage.getItem("amazeu"));
+    let savedPhotos = JSON.parse(localStorage.getItem("amazeu"));
+    if (savedPhotos === null) {
+      savedPhotos = [];
+    }
 
     setLandmarks(savedPhotos);
     setIsLoading(false);
