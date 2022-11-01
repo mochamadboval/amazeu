@@ -1,8 +1,8 @@
 import Head from "next/head";
 
 import { Fragment, useEffect, useState } from "react";
-import Landmarks from "../components/Landmarks";
 
+import Landmarks from "../components/Landmarks";
 import Container from "../components/layout/Container";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
