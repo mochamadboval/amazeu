@@ -2,17 +2,30 @@ import Head from "next/head";
 import Link from "next/link";
 
 import { Fragment } from "react";
-import Landmarks from "../components/Landmarks";
+import Landmarks from "../../../components/Landmarks";
 
-import Container from "../components/layout/Container";
-import Footer from "../components/layout/Footer";
-import Header from "../components/layout/Header";
-import MainList from "../components/layout/MainList";
+import Container from "../../../components/layout/Container";
+import Footer from "../../../components/layout/Footer";
+import Header from "../../../components/layout/Header";
+import MainList from "../../../components/layout/MainList";
 
-import styles from "../styles/Home.module.css";
+import styles from "../../../styles/Home.module.css";
 
-const Home = (props) => {
+const Page = (props) => {
   let landmarks = props.landmarks;
+
+  let prevPage = String(landmarks.page - 1);
+  if (prevPage === "1") {
+    prevPage = "/";
+  }
+
+  let isEnd = false;
+  let nextPage = String(landmarks.page + 1);
+  if (landmarks.next_page === undefined) {
+    isEnd = true;
+    nextPage = "/";
+  }
+
   const totalPages = landmarks.total_results / 20;
 
   return (
@@ -31,7 +44,7 @@ const Home = (props) => {
         <MainList>
           <Landmarks landmarks={landmarks.photos} />
           <div className={styles.pagination}>
-            <Link className={`${styles.prev} ${styles.disabled}`} href="/">
+            <Link className={styles.prev} href={prevPage}>
               Prev
             </Link>
             <p>
@@ -40,7 +53,10 @@ const Home = (props) => {
                 ? totalPages
                 : (totalPages + 1).toFixed()}
             </p>
-            <Link className={styles.next} href="/page/2">
+            <Link
+              className={`${styles.next} ${isEnd ? styles.disabled : ""}`}
+              href={nextPage}
+            >
               Next
             </Link>
           </div>
@@ -51,9 +67,17 @@ const Home = (props) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getStaticPaths = () => {
+  return {
+    fallback: "blocking",
+    paths: [],
+  };
+};
+
+export const getStaticProps = async (context) => {
+  const pageId = context.params.pageId;
   const response = await fetch(
-    "https://api.pexels.com/v1/search?page=1&per_page=20&query=landmark",
+    `https://api.pexels.com/v1/search?page=${pageId}&per_page=20&query=landmark`,
     {
       headers: {
         Authorization: process.env.API_KEY,
@@ -70,4 +94,4 @@ export const getStaticProps = async () => {
   };
 };
 
-export default Home;
+export default Page;

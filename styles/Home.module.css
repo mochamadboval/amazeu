@@ -5,11 +5,13 @@
   margin-top: 20px;
 }
 
-.pagination > button:disabled {
-  background-color: var(--color-white-200);
-  border-color: var(--color-white-200);
-  color: var(--color-white);
-  cursor: not-allowed;
+.pagination > a {
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 14px 15px;
+  text-decoration: none;
 }
 
 .prev {
@@ -22,4 +24,11 @@
   border: 2px solid transparent;
   background-color: var(--color-green);
   color: var(--color-white);
+}
+
+.disabled {
+  background-color: var(--color-white-200);
+  border-color: var(--color-white-200);
+  color: var(--color-white);
+  pointer-events: none;
 }
