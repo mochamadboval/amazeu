@@ -7,6 +7,7 @@ const SEO = (props) => {
       <meta name="description" content={props.description} />
       <meta name="author" content="Mochamad Boval" />
       <meta name="robots" content="index, follow" />
+      <meta name="google-site-verification" content="kFdyVT4XaeCQ1wVV0LUS4ND82-k0BtBIA51PITw8byI" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="og:url" content={props.page} />
       <meta property="og:type" content="website" />
