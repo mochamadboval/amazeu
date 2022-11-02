@@ -21,7 +21,7 @@ const Page = (props) => {
 
   let isEnd = false;
   let nextPage = String(landmarks.page + 1);
-  if (landmarks.next_page === undefined) {
+  if (landmarks.next_page === null) {
     isEnd = true;
     nextPage = "/";
   }
@@ -84,9 +84,27 @@ export const getStaticProps = async (context) => {
   );
   const data = await response.json();
 
+  let next_page = data.next_page;
+  if (next_page === undefined) {
+    next_page = null;
+  }
+
   return {
     props: {
-      landmarks: data,
+      landmarks: {
+        page: data.page,
+        next_page: next_page,
+        total_results: data.total_results,
+        photos: data.photos.map((photo) => ({
+          id: photo.id,
+          alt: photo.alt,
+          height: photo.height,
+          width: photo.width,
+          src: {
+            landscape: photo.src.landscape,
+          },
+        })),
+      },
     },
     revalidate: 3600,
   };

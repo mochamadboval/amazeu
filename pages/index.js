@@ -62,7 +62,19 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      landmarks: data,
+      landmarks: {
+        page: data.page,
+        total_results: data.total_results,
+        photos: data.photos.map((photo) => ({
+          id: photo.id,
+          alt: photo.alt,
+          height: photo.height,
+          width: photo.width,
+          src: {
+            landscape: photo.src.landscape,
+          },
+        })),
+      },
     },
     revalidate: 3600,
   };

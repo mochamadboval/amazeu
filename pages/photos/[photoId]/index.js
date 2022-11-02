@@ -74,10 +74,9 @@ const Photo = (props) => {
           </nav>
           <h1>Amaze U</h1>
         </header>
-
         <main className={styles.main}>
           <Image
-            src={photo.src.large2x}
+            src={photo.src.large}
             alt={photo.alt}
             title={photo.alt}
             height={photo.height}
@@ -99,7 +98,6 @@ const Photo = (props) => {
             <Link href={photo.url}>Download on Pexels</Link>
           </div>
         </main>
-
         <Footer />
       </Container>
     </Fragment>
@@ -118,7 +116,19 @@ export const getServerSideProps = async (context) => {
 
   return {
     props: {
-      photo: data,
+      photo: {
+        id: data.id,
+        alt: data.alt,
+        url: data.url,
+        photographer: data.photographer,
+        photographer_url: data.photographer_url,
+        height: data.height,
+        width: data.width,
+        src: {
+          landscape: data.src.landscape,
+          large: data.src.large,
+        },
+      },
     },
   };
 };
