@@ -1,10 +1,10 @@
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { Fragment, useEffect, useState } from "react";
 
+import SEO from "../../../components/SEO";
 import Container from "../../../components/layout/Container";
 import Footer from "../../../components/layout/Footer";
 
@@ -60,14 +60,12 @@ const Photo = (props) => {
 
   return (
     <Fragment>
-      <Head>
-        <title>{photo.alt} - Amaze U</title>
-        <meta
-          name="description"
-          content={`${photo.alt} by ${photo.photographer}`}
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <SEO
+        title={`${photo.alt} - Amaze U`}
+        description={`${photo.alt} by ${photo.photographer}`}
+        page={`https://amazeu.vercel.app/photos/${photo.id}`}
+        image={photo.src.landscape}
+      />
 
       <Container>
         <header className={styles.header}>

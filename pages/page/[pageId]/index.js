@@ -1,9 +1,9 @@
-import Head from "next/head";
 import Link from "next/link";
 
 import { Fragment } from "react";
 
 import Landmarks from "../../../components/Landmarks";
+import SEO from "../../../components/SEO";
 import Container from "../../../components/layout/Container";
 import Footer from "../../../components/layout/Footer";
 import Header from "../../../components/layout/Header";
@@ -30,14 +30,12 @@ const Page = (props) => {
 
   return (
     <Fragment>
-      <Head>
-        <title>Amaze U</title>
-        <meta
-          name="description"
-          content="Explore all famous landmarks around the world."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <SEO
+        title={`Amaze U - Page ${landmarks.page}`}
+        description="Explore all famous landmarks around the world."
+        page={`https://amazeu.vercel.app/page/${landmarks.page}`}
+        image="https://amazeu.vercel.app/amazeu.png"
+      />
 
       <Container>
         <Header>Explore all famous landmarks around the world.</Header>

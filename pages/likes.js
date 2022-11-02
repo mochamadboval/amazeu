@@ -1,8 +1,7 @@
-import Head from "next/head";
-
 import { Fragment, useEffect, useState } from "react";
 
 import Landmarks from "../components/Landmarks";
+import SEO from "../components/SEO";
 import Container from "../components/layout/Container";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
@@ -24,11 +23,12 @@ const Likes = () => {
 
   return (
     <Fragment>
-      <Head>
-        <title>Your likes | Amaze U</title>
-        <meta name="description" content="All the landmarks you like." />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <SEO
+        title="Your Likes - Amaze U"
+        description="All the landmarks you like."
+        page="https://amazeu.vercel.app/likes"
+        image="https://amazeu.vercel.app/amazeu.png"
+      />
 
       <Container>
         <Header>All the landmarks you like.</Header>
