@@ -84,6 +84,12 @@ export const getStaticProps = async (context) => {
   );
   const data = await response.json();
 
+  if (data.photos.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
+
   let next_page = data.next_page;
   if (next_page === undefined) {
     next_page = null;
